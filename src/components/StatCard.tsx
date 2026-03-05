@@ -3,9 +3,10 @@ import React from "react";
 interface Props {
     title: string;
     value: number;
+    clickable?: boolean;
 }
 
-const StatCard: React.FC<Props> = ({ title, value }) => {
+const StatCard: React.FC<Props> = ({ title, value, clickable }) => {
     return (
         <div className="bg-white rounded-xl shadow-sm p-6 flex justify-between items-center w-full">
             <div>

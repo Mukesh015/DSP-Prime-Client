@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { DateRange } from "react-date-range";
+import { TANK_PARAMETERS } from "../../constants/TankParameters";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
@@ -9,8 +10,9 @@ interface Range {
     key: string;
 }
 
-const AnalyticsFilters = () => {
+const AnalyticsFilters = ({ loadGraphData }: { loadGraphData: (tank_no: string, startDate: string, endDate: string) => void }) => {
     const [showPicker, setShowPicker] = useState(false);
+    const [selectedTank, setSelectedTank] = useState(TANK_PARAMETERS[0].tank_no);
 
     const [range, setRange] = useState<Range[]>([
         {
@@ -23,24 +25,59 @@ const AnalyticsFilters = () => {
     const formatDate = (date: Date) =>
         date.toISOString().split("T")[0];
 
+    const handleFetchGraphData = () => {
+        loadGraphData(selectedTank, formatDate(range[0].startDate), formatDate(range[0].endDate));
+    }
+
     return (
         <div className="bg-white rounded-xl p-6 shadow-sm flex items-end gap-6 flex-wrap relative">
 
             {/* Tank Select */}
-            <div>
-                <label className="text-sm text-gray-600">Select Tank:</label>
+            {/* Tank Select */}
+            <div className="flex flex-col gap-1 min-w-[220px]">
+                <label className="text-sm font-medium text-gray-600">
+                    Select Tank
+                </label>
 
-                <select className="mt-2 border rounded-lg px-4 py-2 w-[180px]">
-                    <option>SMS : CS 13</option>
-                    <option>Stripper Bay : BS 3B</option>
-                    <option>CS 11C</option>
-                </select>
+                <div className="relative">
+                    <select
+                        value={selectedTank}
+                        onChange={(e) => setSelectedTank(e.target.value)}
+                        className="
+                            w-full
+                            appearance-none
+                            border border-gray-300
+                            rounded-lg
+                            px-4 py-2.5
+                            text-sm
+                            bg-white
+                            shadow-sm
+                            focus:outline-none
+                            focus:ring-2
+                            focus:ring-indigo-500
+                            focus:border-indigo-500
+                            hover:border-gray-400
+                            transition
+                        "
+                    >
+                        {TANK_PARAMETERS.map((tank) => (
+                            <option key={tank.tank_no} value={tank.tank_no}>
+                                {tank.tank_no} - {tank.location}
+                            </option>
+                        ))}
+                    </select>
+
+                    {/* Custom Arrow */}
+                    <div className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-gray-400">
+                        ▼
+                    </div>
+                </div>
             </div>
 
             {/* Date Range */}
             <div className="relative">
-                <label className="text-sm text-gray-600">
-                    Select Date Range:
+                <label className="text-sm font-medium text-gray-600">
+                    Select Date Range
                 </label>
 
                 <input
@@ -65,7 +102,11 @@ const AnalyticsFilters = () => {
             </div>
 
             {/* Button */}
-            <button className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg">
+            <button
+                disabled={!range[0].startDate || !range[0].endDate}
+                className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg"
+                onClick={handleFetchGraphData}
+            >
                 Fetch Data
             </button>
         </div>
