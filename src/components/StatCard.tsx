@@ -6,7 +6,7 @@ interface Props {
     clickable?: boolean;
 }
 
-const StatCard: React.FC<Props> = ({ title, value, clickable }) => {
+const StatCard: React.FC<Props> = ({ title, value }) => {
     return (
         <div className="bg-white rounded-xl shadow-sm p-6 flex justify-between items-center w-full">
             <div>

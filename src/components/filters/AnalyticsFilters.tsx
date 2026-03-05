@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { DateRange } from "react-date-range";
-import { TANK_PARAMETERS } from "../../constants/TankParameters";
+import { TANK_PARAMETERS } from "../../constants/tanks";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 
