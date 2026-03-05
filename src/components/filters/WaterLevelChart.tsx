@@ -14,14 +14,70 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
     const options: ApexOptions = {
         chart: {
             id: "water-level",
-            toolbar: { show: false },
-            zoom: { enabled: false }
+            type: "area",
+            zoom: {
+                enabled: true,
+                type: "x",
+                autoScaleYaxis: true
+            },
+            toolbar: {
+                show: true,
+                tools: {
+                    zoom: true,
+                    zoomin: true,
+                    zoomout: true,
+                    pan: true,
+                    reset: true,
+                    download: true
+                }
+            },
+            animations: { enabled: false }
+        },
+
+        dataLabels: { enabled: false },
+
+        markers: {
+            size: 0,
+            hover: { size: 6 }
+        },
+
+        tooltip: {
+            enabled: true,
+            x: {
+                formatter: (value) =>
+                    new Date(value).toLocaleString("en-IN", {
+                        timeZone: "Asia/Kolkata",
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: false
+                    })
+            },
+            y: {
+                formatter: (v: number) => `${v} L`
+            }
         },
 
         xaxis: {
             type: "datetime",
             labels: {
-                rotate: -45
+                rotate: -45,
+                formatter: (value: string) => {
+                    const d = new Date(Number(value));
+                    return d.toLocaleString("en-IN", {
+                        timeZone: "Asia/Kolkata",
+                        day: "2-digit",
+                        month: "short",
+                        hour: "2-digit",
+                        minute: "2-digit",
+                        hour12: false
+                    });
+                }
+            },
+            title: {
+                text: "Date & Time (IST)"
             }
         },
 
@@ -37,8 +93,12 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
         },
 
         fill: {
-            type: "solid",
-            opacity: 0.9
+            type: "gradient",
+            gradient: {
+                shadeIntensity: 1,
+                opacityFrom: 0.7,
+                opacityTo: 0.15
+            }
         },
 
         colors: ["#2ec4b6"],

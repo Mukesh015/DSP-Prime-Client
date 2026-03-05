@@ -32,12 +32,12 @@ const Sidebar = ({ open, setOpen }: Props) => {
 
             {/* Sidebar */}
             <div
-                className={`
+                className={` shadow-lg
           fixed md:static
           top-0 left-0
           h-screen w-65
-          bg-[#2c344c]
-          text-white
+          bg-[#ffffff]
+          text-black
           flex flex-col
           z-50
           transform transition-transform duration-300
@@ -54,7 +54,7 @@ const Sidebar = ({ open, setOpen }: Props) => {
                 </div>
 
                 {/* Logo */}
-                <div className="flex items-center gap-3 px-6 py-6 border-b border-gray-600">
+                <div className="flex items-center gap-3 px-6 py-6">
                     <div className="bg-white p-2 rounded">
                         <Box className="text-[#2c344c]" size={22} />
                     </div>
@@ -73,8 +73,8 @@ const Sidebar = ({ open, setOpen }: Props) => {
                         className={({ isActive }) =>
                             `flex items-center gap-3 px-4 py-3 rounded-lg transition
               ${isActive
-                                ? "bg-gradient-to-r from-indigo-500 to-purple-500 shadow-lg"
-                                : "hover:bg-[#3a425a]"
+                                ? "bg-linear-to-r from-indigo-500 to-purple-500 shadow-lg"
+                                : "hover:bg-[#d6d6d6]"
                             }`
                         }
                         onClick={() => setOpen(false)}
@@ -86,7 +86,7 @@ const Sidebar = ({ open, setOpen }: Props) => {
                     {/* Analytics */}
                     <NavLink
                         to="/analytics"
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#3a425a]"
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#d6d6d6]"
                         onClick={() => setOpen(false)}
                     >
                         <BarChart3 size={18} />
@@ -96,7 +96,7 @@ const Sidebar = ({ open, setOpen }: Props) => {
                     {/* Users */}
                     <NavLink
                         to="/users"
-                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#3a425a]"
+                        className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-[#d6d6d6]"
                         onClick={() => setOpen(false)}
                     >
                         <Users size={18} />
@@ -106,7 +106,7 @@ const Sidebar = ({ open, setOpen }: Props) => {
                     {/* Report Parent */}
                     <button
                         onClick={() => setReportOpen(!reportOpen)}
-                        className="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-[#3a425a]"
+                        className="flex items-center justify-between px-4 py-3 rounded-lg hover:bg-[#d6d6d6]"
                     >
                         <div className="flex items-center gap-3">
                             <FileText size={18} />
@@ -121,11 +121,11 @@ const Sidebar = ({ open, setOpen }: Props) => {
 
                     {/* Submenu */}
                     {reportOpen && (
-                        <div className="ml-8 flex flex-col gap-2 text-gray-300 text-sm">
+                        <div className="ml-8 flex flex-col gap-2 text-gray-600 text-sm">
 
                             <NavLink
                                 to="/offline-logs"
-                                className="flex items-center gap-2 py-2 hover:text-white"
+                                className="flex items-center gap-2 py-2"
                                 onClick={() => setOpen(false)}
                             >
                                 <span className="w-2 h-2 border rounded-full"></span>
@@ -134,7 +134,7 @@ const Sidebar = ({ open, setOpen }: Props) => {
 
                             <NavLink
                                 to="/sms-logs"
-                                className="flex items-center gap-2 py-2 hover:text-white"
+                                className="flex items-center gap-2 py-2"
                                 onClick={() => setOpen(false)}
                             >
                                 <span className="w-2 h-2 border rounded-full"></span>
