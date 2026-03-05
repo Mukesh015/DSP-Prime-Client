@@ -17,7 +17,7 @@ const Header: React.FC<Props> = ({ onMenuClick }) => {
                     onClick={onMenuClick}
                     className="md:hidden p-2 rounded-lg hover:bg-gray-100"
                 >
-                    <Menu className="w-6 h-6 text-gray-700" />
+                    <Menu className="w-6 h-6 text-gray-600" />
                 </button>
 
                 <h1 className="text-xl md:text-2xl font-semibold text-gray-700">
