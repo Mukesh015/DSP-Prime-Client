@@ -41,7 +41,7 @@ const TankCard = ({ tank }: Props) => {
             </h3>
 
             <div className="mt-3 text-sm space-y-1">
-                <p>ETF - {tank.etf}</p>
+                <p>Alert - {tank.alert}</p>
                 <p>
                     Flow - <span className="text-green-600">{tank.flow}</span>
                 </p>
