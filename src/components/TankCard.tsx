@@ -75,7 +75,7 @@ const TankCard = ({ tank }: Props) => {
                 <p>Alert - {tank.alert}</p>
 
                 <p>
-                    Flow - <span className="text-green-600">{tank.flow}</span>
+                    Flow - <span className="text-green-600">No Leakage</span>
                 </p>
 
                 <p>

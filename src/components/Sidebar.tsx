@@ -7,7 +7,8 @@ import {
     Box,
     X,
     Bell,
-    Info
+    Info,
+    User
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
@@ -112,6 +113,16 @@ const Sidebar = ({ open, setOpen }: Props) => {
                     >
                         <Info size={18} />
                         Parameters
+                    </NavLink>
+
+                    {/* Users */}
+                    <NavLink
+                        to="/users"
+                        className={linkStyle}
+                        onClick={() => setOpen(false)}
+                    >
+                        <User size={18} />
+                        Users
                     </NavLink>
 
                     {/* Report Parent */}

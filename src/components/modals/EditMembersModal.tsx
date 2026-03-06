@@ -47,7 +47,7 @@ const EditMembersModal = ({ open, onClose }: Props) => {
     const handleSave = async (member: Member) => {
         try {
             if (member.isNew) {
-                await addUser(member);
+                await addUser(member);  
             } else {
                 await updateUser(member);
             }
@@ -74,24 +74,6 @@ const EditMembersModal = ({ open, onClose }: Props) => {
 
     };
 
-    /* -------------------------
-        Add Member
-    ------------------------- */
-
-    const handleAddMember = () => {
-
-        const newMember: Member = {
-            id: Date.now(),
-            name: "",
-            phone: "",
-            isNew: true,
-        };
-
-        setMembers((prev) => [newMember, ...prev]);
-        setEditId(newMember.id);
-
-    };
-
     useEffect(() => {
         fetchAllMembers();
     }, []);
@@ -102,26 +84,18 @@ const EditMembersModal = ({ open, onClose }: Props) => {
 
         <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
 
-            <div className="bg-white w-[750px] rounded-xl shadow-lg">
+            <div className="bg-white w-187.5 rounded-xl shadow-lg">
 
                 {/* HEADER */}
 
                 <div className="flex justify-between items-center px-6 py-4 border-b border-gray-200">
 
-                    <div className="flex items-center gap-2">
-                        <button onClick={onClose}>
-                            <ChevronLeft size={20} />
-                        </button>
-                        <h2 className="text-lg font-semibold">Edit Members</h2>
-                    </div>
+                    <h2 className="text-lg font-semibold">Edit Members</h2>
 
-                    <button
-                        onClick={handleAddMember}
-                        className="flex items-center gap-2 bg-indigo-500 text-white px-4 py-2 rounded-lg"
-                    >
-                        <Plus size={16} />
-                        Add Member
+                    <button onClick={onClose}>
+                        <X size={20} />
                     </button>
+
                 </div>
 
                 {/* TABLE */}

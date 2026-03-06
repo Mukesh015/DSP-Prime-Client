@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { exportOfflineReport, exportSMSReportLogs, getSMSReportLogs } from "../../api/report";
+import { exportSMSReportLogs, getSMSReportLogs } from "../../api/report";
 import { formatDateTime } from "../../utils/dateTime";
 import EditMembersModal from "../../components/modals/EditMembersModal";
 import ExportModal from "../../components/modals/ExportModal";
