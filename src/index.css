@@ -11,3 +11,18 @@ body {
 button {
   cursor: pointer;
 }
+
+/* Hide scrollbar for Chrome, Safari and Edge */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for Firefox */
+* {
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for IE and older Edge */
+* {
+  -ms-overflow-style: none;
+}

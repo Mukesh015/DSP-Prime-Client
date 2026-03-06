@@ -137,7 +137,7 @@ const Notifications = () => {
                                 </td>
 
                                 <td className="px-6 py-4 capitalize">
-                                    {item.type}
+                                    {item.type === "overflow" ? "High Level" : item.type === "underflow" ? "Low Level" : item.type === "offline" ? "Network Issue" : item.type}
                                 </td>
 
                                 <td className="px-6 py-4 text-gray-600">

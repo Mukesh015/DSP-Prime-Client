@@ -13,7 +13,13 @@ export interface Tank {
     lastUpdated: string | null;
 
     border: "red" | "green";
-
+    msg: string;
     flow: string;
     alert: string | null;
+}
+
+export interface User {
+    id: number;
+    name: string;
+    phone: string;
 }

@@ -16,7 +16,7 @@ const TankGrid = ({ tanks }: { tanks: Tank[] }) => {
   }
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6 md:gap-8 mt-8 pb-10">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3 gap-6 md:gap-8 mt-8 pb-10">
       {tanks.map((tank) => (
         <TankCard key={tank.tank_no} tank={tank} />
       ))}

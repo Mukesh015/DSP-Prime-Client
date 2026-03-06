@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { getSMSReportLogs } from "../../api/report";
+import { exportOfflineReport, exportSMSReportLogs, getSMSReportLogs } from "../../api/report";
 import { formatDateTime } from "../../utils/dateTime";
+import EditMembersModal from "../../components/modals/EditMembersModal";
+import ExportModal from "../../components/modals/ExportModal";
 
 interface SMSLog {
     id: number;
@@ -24,6 +26,18 @@ const SMSLogs = () => {
     const [limit] = useState(10);
     const [logs, setLogs] = useState<SMSLog[]>([]);
     const [pagination, setPagination] = useState<Pagination | null>(null);
+    const [openMembersModal, setOpenMembersModal] = useState(false);
+    const [showExportModal, setShowExportModal] = useState(false);
+
+    const handleExport = async (start: string, end: string): Promise<any[]> => {
+        try {
+            const res = await exportSMSReportLogs(start, end);
+            return res.data || []; // Return the data to be exported
+        } catch (error) {
+            console.error("Error exporting logs:", error);
+            return [];
+        }
+    }
 
     const handleFetchLogs = async () => {
         try {
@@ -55,14 +69,20 @@ const SMSLogs = () => {
                 <h2 className="text-xl font-semibold text-gray-700">
                     SMS Logs
                 </h2>
-
-                <button
-                    onClick={() => { }}
-                    className="border border-pink-500 text-pink-500 px-4 py-2 rounded-lg flex items-center gap-2"
-                >
-                    EXPORT TO CSV
-                </button>
-
+                <div className="flex items-center gap-4">
+                    <button
+                        onClick={() => setShowExportModal(true)}
+                        className="border border-pink-500 text-pink-500 px-4 py-2 rounded-lg flex items-center gap-2"
+                    >
+                        Export
+                    </button>
+                    <button
+                        onClick={() => setOpenMembersModal(true)}
+                        className="border bg-pink-500 text-white px-4 py-2 rounded-lg flex items-center gap-2"
+                    >
+                        Add Members
+                    </button>
+                </div>
             </div>
 
             {/* Table */}
@@ -180,6 +200,12 @@ const SMSLogs = () => {
                     </button>
                 </div>
             </div>
+            <EditMembersModal
+                open={openMembersModal}
+                onClose={() => setOpenMembersModal(false)}
+            />
+            <ExportModal type="report" onExport={handleExport} open={showExportModal} onClose={() => setShowExportModal(false)} />
+
         </div>
     );
 };

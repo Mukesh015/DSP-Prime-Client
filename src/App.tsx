@@ -5,6 +5,7 @@ import Analytics from "./pages/Analytics";
 import Notifications from "./pages/Notifications";
 import OfflineLogs from "./pages/reports/OfflineLogs";
 import SMSLogs from "./pages/reports/SMSLogs";
+import TankParameter from "./pages/TankParameter";
 
 function App() {
     return (
@@ -16,6 +17,7 @@ function App() {
                     <Route path="/" element={<Dashboard />} />
                     <Route path="/analytics" element={<Analytics />} />
                     <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/parameters" element={<TankParameter />} />
                     <Route path="/report/offline-logs" element={<OfflineLogs />} />
                     <Route path="/report/sms-logs" element={<SMSLogs />} />
                 </Routes>

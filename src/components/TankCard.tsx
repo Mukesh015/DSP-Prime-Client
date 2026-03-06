@@ -14,6 +14,14 @@ const TankCard = ({ tank }: Props) => {
     const lowerPercent =
         (tank.lower_safe_limit / tank.tank_volume) * 100;
 
+    const isAlert =
+        (tank.msg === "network_issue" &&
+            (tank.flow === "high_level" || tank.flow === "low_level")) ||
+        tank.msg === "high_level" ||
+        tank.msg === "low_level";
+
+    const textColor = isAlert ? "text-red-600" : "text-green-600";
+
     return (
         <div
             className={`border-4 ${tank.border === "red" ? "border-red-500" : "border-green-500"
@@ -30,7 +38,7 @@ const TankCard = ({ tank }: Props) => {
 
                     {/* Water Level */}
                     <div
-                        className="absolute bottom-0 w-full bg-gradient-to-b from-sky-300 to-sky-700"
+                        className="absolute bottom-0 w-full bg-linear-to-b from-sky-300 to-sky-700"
                         style={{ height: `${percent}%` }}
                     />
 
@@ -59,7 +67,7 @@ const TankCard = ({ tank }: Props) => {
 
             </div>
 
-            <h3 className="text-center text-xl font-bold mt-3">
+            <h3 className={`text-center text-xl font-bold mt-3 ${textColor}`}>
                 {tank.liters?.toLocaleString()} ltrs
             </h3>
 

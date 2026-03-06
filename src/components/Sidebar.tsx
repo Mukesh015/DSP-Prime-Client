@@ -6,7 +6,8 @@ import {
     ChevronDown,
     Box,
     X,
-    Bell
+    Bell,
+    Info
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
@@ -105,12 +106,12 @@ const Sidebar = ({ open, setOpen }: Props) => {
 
                     {/* Users */}
                     <NavLink
-                        to="/users"
+                        to="/parameters"
                         className={linkStyle}
                         onClick={() => setOpen(false)}
                     >
-                        <Users size={18} />
-                        Users
+                        <Info size={18} />
+                        Parameters
                     </NavLink>
 
                     {/* Report Parent */}
