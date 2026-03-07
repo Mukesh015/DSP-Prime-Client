@@ -38,6 +38,7 @@ const StatsSection = ({
                 <StatCard
                     title="Total Tanks"
                     value={stats.stats.totalTanks}
+                    icon="🛢️"
                 />
 
                 {/* Online Tanks */}
@@ -46,6 +47,7 @@ const StatsSection = ({
                         title="Online Tanks"
                         value={stats.stats.onlineTanks}
                         clickable
+                        icon="🟢"
                     />
                 </div>
 
@@ -55,6 +57,7 @@ const StatsSection = ({
                         title="Offline Tanks"
                         value={stats.stats.offlineTanks}
                         clickable
+                        icon="🔴"
                     />
                 </div>
 

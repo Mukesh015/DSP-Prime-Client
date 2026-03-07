@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { deleteUser, getAllUsers, updateUser } from "../api/user";
 import { Pencil, Trash2 } from "lucide-react";
 import AddUserModal from "../components/modals/AddUserModal";
+import { downloadUsersPDF } from "../utils/downloadUsersDetails";
 
 interface User {
     id: number;
@@ -75,11 +76,7 @@ const UsersPage = () => {
                         Add User
                     </button>
 
-                    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg">
-                        Export
-                    </button>
-
-                    <button className="bg-indigo-500 text-white px-4 py-2 rounded-lg">
+                    <button onClick={() => downloadUsersPDF(users)} className="bg-indigo-500 text-white px-4 py-2 rounded-lg">
                         Print Table
                     </button>
 

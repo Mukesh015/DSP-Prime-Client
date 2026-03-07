@@ -83,7 +83,7 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
 
         yaxis: {
             title: {
-                text: "Water Level (Litres)"
+                text: "Water Level (in %)"
             }
         },
 

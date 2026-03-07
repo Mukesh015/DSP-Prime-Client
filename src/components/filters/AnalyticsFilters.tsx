@@ -76,7 +76,7 @@ const AnalyticsFilters = ({ loadGraphData }: { loadGraphData: (tank_no: string, 
 
             {/* Date Range */}
             <div className="relative">
-                <label className="text-sm font-medium text-gray-600">
+                <label className="text-sm font-medium text-gray-600 mr-2">
                     Select Date Range
                 </label>
 
@@ -86,7 +86,7 @@ const AnalyticsFilters = ({ loadGraphData }: { loadGraphData: (tank_no: string, 
                     value={`${formatDate(range[0].startDate)} to ${formatDate(
                         range[0].endDate
                     )}`}
-                    className="mt-2 border rounded-lg px-4 py-2 w-[240px] cursor-pointer"
+                    className="mt-2 border text-sm border-gray-200 rounded-lg px-4 py-2 w-60 cursor-pointer"
                 />
 
                 {showPicker && (

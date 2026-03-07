@@ -1,4 +1,4 @@
-import { Bell, Menu, AlertTriangle, X } from "lucide-react";
+import { Bell, Menu, AlertTriangle, X, User, LogOut } from "lucide-react";
 import React, { useState } from "react";
 import { getNotifications } from "../api/notification";
 import { useNavigate } from "react-router-dom";
@@ -23,6 +23,12 @@ const Header: React.FC<Props> = ({ onMenuClick }) => {
     const [notifications, setNotifications] = useState<Notification[]>([]);
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState(false);
+    const [openModal, setOpenModal] = useState(false);
+
+    const handleLogout = () => {
+        localStorage.removeItem("token");
+        navigate("/login");
+    };
 
     const handleFetchNotifications = async () => {
         try {
@@ -122,7 +128,7 @@ const Header: React.FC<Props> = ({ onMenuClick }) => {
                                             </span>
 
                                             <span className="text-sm text-gray-500">
-                                                {n.message}
+                                                {n.type === "overflow" ? "High Level" : n.type === "underflow" ? "Low Level" : n.type === "offline" ? "Network Issue" : n.type}
                                             </span>
 
                                             <span className="text-xs text-gray-400">
@@ -149,17 +155,31 @@ const Header: React.FC<Props> = ({ onMenuClick }) => {
 
                 </div>
 
-                {/* Profile */}
-                <div className="flex items-center gap-3 cursor-pointer">
-                    <span className="text-gray-600 hidden sm:block">
-                        Admin
-                    </span>
+                <div className="relative">
+                    <button
+                        onClick={() => setOpenModal(!openModal)}
+                        className="flex items-center gap-3 cursor-pointer bg-gray-100 px-3 py-2 rounded-lg hover:bg-gray-200"
+                    >
+                        <span className="text-gray-600 hidden sm:block">Admin</span>
+                        <User className="w-6 h-6 text-gray-600" />
+                    </button>
 
-                    <img
-                        src="https://i.pravatar.cc/40"
-                        className="w-9 h-9 rounded-full border"
-                        alt="profile"
-                    />
+                    <div
+                        className={`absolute right-0 mt-2 bg-white rounded-lg shadow-lg z-50
+    transform transition-all duration-200 ease-in-out
+    ${openModal
+                                ? "opacity-100 translate-y-0 pointer-events-auto"
+                                : "opacity-0 -translate-y-2 pointer-events-none"
+                            }`}
+                    >
+                        <button
+                            onClick={handleLogout}
+                            className="flex items-center gap-2 px-3 py-4 hover:bg-gray-100 w-full"
+                        >
+                            <LogOut className="w-4 h-4 text-gray-600" />
+                            <p className="text-sm">Log out</p>
+                        </button>
+                    </div>
                 </div>
 
             </div>
