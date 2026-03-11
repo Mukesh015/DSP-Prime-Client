@@ -56,7 +56,16 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
                     })
             },
             y: {
-                formatter: (v: number) => `${v} L`
+                formatter: (v: number) => `${v}%`
+            }
+        },
+
+        yaxis: {
+            min: 0,
+            max: 100,
+            tickAmount: 5,
+            title: {
+                text: "Water Level (%)"
             }
         },
 
@@ -78,12 +87,6 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
             },
             title: {
                 text: "Date & Time (IST)"
-            }
-        },
-
-        yaxis: {
-            title: {
-                text: "Water Level (in %)"
             }
         },
 
