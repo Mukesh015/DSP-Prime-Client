@@ -2,6 +2,7 @@ import { Bell, Menu, AlertTriangle, X, User, LogOut } from "lucide-react";
 import React, { useState } from "react";
 import { getNotifications } from "../api/notification";
 import { useNavigate } from "react-router-dom";
+import logo2 from "../assets/logo2.jpg";
 
 interface Props {
     onMenuClick?: () => void;
@@ -58,8 +59,16 @@ const Header: React.FC<Props> = ({ onMenuClick }) => {
                     <Menu className="w-6 h-6 text-gray-600" />
                 </button>
 
+                {/* Logo */}
+                <img
+                    src={logo2}
+                    alt="Logo"
+                    className="w-10 h-10 object-contain"
+                />
+
+                {/* Title */}
                 <h1 className="text-xl md:text-2xl font-semibold text-gray-700">
-                    Aqua Sense System
+                    Smart Aqua Sense System
                 </h1>
 
             </div>

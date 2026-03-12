@@ -1,10 +1,8 @@
 import {
     LayoutDashboard,
     BarChart3,
-    Users,
     FileText,
     ChevronDown,
-    Box,
     X,
     Bell,
     Info,
@@ -13,6 +11,7 @@ import {
 
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
+import logo from "../assets/logo1.jpg";
 
 interface Props {
     open: boolean;
@@ -67,13 +66,19 @@ const Sidebar = ({ open, setOpen }: Props) => {
 
                 {/* Logo */}
                 <div className="flex items-center gap-3 px-6 py-6">
-                    <div className="bg-gray-100 p-2 rounded">
-                        <Box className="text-indigo-600" size={22} />
+
+                    <div>
+                        <img
+                            src={logo}
+                            alt="SAIL DSP Logo"
+                            className="w-14 h-14 object-contain"
+                        />
                     </div>
 
                     <span className="text-xl font-semibold text-indigo-600">
                         SAIL DSP
                     </span>
+
                 </div>
 
                 {/* Menu */}

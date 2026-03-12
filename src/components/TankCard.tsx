@@ -159,7 +159,7 @@ const TankCard = ({ tank }: Props) => {
 
                 {/* ================= SCALE ================= */}
 
-                <div className="relative h-52.5 w-5 text-[12px] -top-14">
+                <div className="relative h-52.5 w-10 text-[14px] -top-14">
 
                     {/* This inner area matches the tank water area */}
                     <div className="absolute left-3 top-5 bottom-3.75">
@@ -196,7 +196,7 @@ const TankCard = ({ tank }: Props) => {
                             <div className="absolute -left-5 w-7.5 h-1 bg-red-500" />
 
 
-                            <div className="absolute -left-37.5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition bg-white border rounded-md shadow px-3 py-1 text-sm">
+                            <div className="absolute -left-44.5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition bg-white border rounded-md shadow px-3 py-1 text-sm">
                                 Upper Limit: {Math.round(tank.upper_safe_limit_pct).toLocaleString()} L
                             </div>
                         </div>
@@ -209,7 +209,7 @@ const TankCard = ({ tank }: Props) => {
                             {/* red line touching tank */}
                             <div className="absolute -left-5 w-7.5 h-1 bg-red-500" />
 
-                            <div className="absolute -left-37.5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition bg-white border rounded-md shadow px-3 py-1 text-sm">
+                            <div className="absolute -left-44.5 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition bg-white border rounded-md shadow px-3 py-1 text-sm">
                                 Lower Limit: {Math.round(tank.lower_safe_limit).toLocaleString()} L
                             </div>
                         </div>
@@ -222,7 +222,7 @@ const TankCard = ({ tank }: Props) => {
 
             {/* FOOTER */}
 
-            <div className="mt-3 text-sm space-y-1">
+            <div className="mt-3 text-base space-y-1">
 
                 <p>
                     Alert - {tank.alert}
