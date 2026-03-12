@@ -7,6 +7,8 @@ interface Props {
 
 const TankCard = ({ tank }: Props) => {
 
+    console.log('tank', tank)
+
     const percent = (tank.liters / tank.tank_volume) * 100;
 
     const upperPercent =
@@ -16,7 +18,7 @@ const TankCard = ({ tank }: Props) => {
         (tank.lower_safe_limit / tank.tank_volume) * 100;
 
     const isAlert =
-        (tank.msg === "network_issue" &&
+        (tank.msg === "network_lag" &&
             (tank.flow === "high_level" || tank.flow === "low_level")) ||
         tank.msg === "high_level" ||
         tank.msg === "low_level";

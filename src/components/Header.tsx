@@ -137,7 +137,7 @@ const Header: React.FC<Props> = ({ onMenuClick }) => {
                                             </span>
 
                                             <span className="text-sm text-gray-500">
-                                                {n.type === "overflow" ? "High Level" : n.type === "underflow" ? "Low Level" : n.type === "offline" ? "Network Issue" : n.type}
+                                                {n.type === "overflow" ? "High Level" : n.type === "underflow" ? "Low Level" : n.type === "offline" ? "Network Lag" : n.type}
                                             </span>
 
                                             <span className="text-xs text-gray-400">
