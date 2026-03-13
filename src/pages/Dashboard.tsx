@@ -37,6 +37,11 @@ const Dashboard = () => {
         <>
             <StatsSection stats={stats} />
             <TankGrid tanks={tanks} />
+
+            {/* Footer */}
+            <div className=" mb-4 text-center text-sm text-gray-500">
+                © {new Date().getFullYear()} Plumule Research LLP • Industrial IoT
+            </div>
         </>
     );
 };

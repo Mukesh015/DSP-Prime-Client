@@ -18,5 +18,5 @@ export const formatDateTime = (value: string | null): string => {
 
     const formattedHours = String(hours).padStart(2, "0");
 
-    return `${day}-${month}-${year} ${formattedHours}:${minutes}:${seconds} ${ampm}`;
+    return `${year}-${month}-${day} ${formattedHours}:${minutes}:${seconds} ${ampm}`;
 };

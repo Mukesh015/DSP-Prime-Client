@@ -56,7 +56,7 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
                     })
             },
             y: {
-                formatter: (v: number) => `${v}%`
+                formatter: (val: number) => `${val.toFixed(2)}%`
             }
         },
 
@@ -64,6 +64,9 @@ const WaterLevelChart = ({ graphData }: { graphData: GraphData }) => {
             min: 0,
             max: 100,
             tickAmount: 5,
+            labels: {
+                formatter: (val: number) => `${Math.round(val)}%`
+            },
             title: {
                 text: "Water Level (%)"
             }
