@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { downloadNotificationsPDF } from "../../utils/exportPDF";
-import { downloadOfflineLogsPDF } from "../../utils/downloadOfflineLogsPDF";
+import downloadOfflineLogsExcel from "../../utils/downloadOfflineLogsExcel";
 
 interface Props {
     open: boolean;
@@ -42,7 +42,7 @@ const ExportModal = ({ open, onClose, onExport, type }: Props) => {
             if (type === "notification") {
                 downloadNotificationsPDF(data);
             } else {
-                downloadOfflineLogsPDF(data);
+                downloadOfflineLogsExcel(data);
             }
         } catch (err) {
             console.error(err);

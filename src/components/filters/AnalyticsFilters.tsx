@@ -104,7 +104,7 @@ const AnalyticsFilters = ({ loadGraphData }: { loadGraphData: (tank_no: string, 
             {/* Button */}
             <button
                 disabled={!range[0].startDate || !range[0].endDate}
-                className="bg-gradient-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg"
+                className="bg-linear-to-r from-indigo-500 to-purple-500 text-white px-6 py-2 rounded-lg"
                 onClick={handleFetchGraphData}
             >
                 Fetch Data

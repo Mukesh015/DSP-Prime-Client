@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { exportOfflineReport, getOfflineReport } from "../../api/report";
 import { formatDateTime } from "../../utils/dateTime";
-import { downloadOfflineLogsPDF } from "../../utils/downloadOfflineLogsPDF";
+import downloadOfflineLogsExcel from "../../utils/downloadOfflineLogsExcel";
 import ExportModal from "../../components/modals/ExportModal";
 
 interface OfflineLog {
@@ -76,7 +76,7 @@ const OfflineLogs = () => {
                     </button>
 
                     <button
-                        onClick={() => downloadOfflineLogsPDF(logs)}
+                        onClick={() => downloadOfflineLogsExcel(logs)}
                         className="bg-indigo-500 text-white px-4 py-2 rounded-lg"
                     >
                         Print Table

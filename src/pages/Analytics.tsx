@@ -53,7 +53,7 @@ const Analytics = () => {
 
         let lastValid: number | null = null;
 
-        const cleanedSeries = res.series.map((s) => {
+        const cleanedSeries = res.series.map((s: any) => {
 
             const cleanedData = s.data.map(([timestamp, value]: [number, number]) => {
 
