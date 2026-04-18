@@ -22,8 +22,12 @@ const AnalyticsFilters = ({ loadGraphData }: { loadGraphData: (tank_no: string, 
         },
     ]);
 
-    const formatDate = (date: Date) =>
-        date.toISOString().split("T")[0];
+    const formatDate = (date: Date) => {
+        const y = date.getFullYear();
+        const m = String(date.getMonth() + 1).padStart(2, "0");
+        const d = String(date.getDate()).padStart(2, "0");
+        return `${y}-${m}-${d}`;
+    };
 
     const handleFetchGraphData = () => {
         loadGraphData(selectedTank, formatDate(range[0].startDate), formatDate(range[0].endDate));
